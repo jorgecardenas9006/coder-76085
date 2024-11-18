@@ -88,7 +88,22 @@ router.delete('/:id', async (req, res) => {
 
 //actulizar la cantidad, el precio o las caracteristicas de un producto
 router.patch('/:id', async (req, res) => {
-    res.send('Product updated partially');
+    try {
+        const id = req.params.id;
+        const {price, stock, status} = req.body;
+        const product = {price, stock, status};
+        if (!price && !stock && !status) {
+            return res.status(400).send('At least one field is required: price, stock or status');
+        }
+        const updateProduct = await productManager.updateProductForParameters(id, product);
+        if (!updateProduct) {
+            return res.status(404).send('Product not found');
+        }
+        res.status(200).send('Product updated');
+    }
+    catch (error) {
+        res.status(400).send(error.message);
+    }
 });
 
 export default router;
