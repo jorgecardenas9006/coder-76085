@@ -1,0 +1,144 @@
+[
+    {
+    "id": 1,
+    "userId": 101,
+    "products": []
+    },
+    {
+    "id": 2,
+    "userId": 102,
+       "products": [
+        {
+        "productId": 201,
+        "name": "Laptop",
+        "quantity": 1,
+        "price": 1200.50
+        },
+        {
+        "productId": 202,
+        "name": "Mouse",
+        "quantity": 2,
+        "price": 25.00
+        }
+    ]
+    },
+    {
+        "id": 3,
+        "userId": 103,
+        "products": []
+    },
+    {
+    "id": 4,
+    "userId": 104,
+    "products": [
+        {
+        "productId": 203,
+        "name": "Headphones",
+        "quantity": 1,
+        "price": 75.99
+        }
+    ]
+    },
+    {
+    "id": 5,
+    "userId": 105,
+    "products": []
+    },
+    {
+    "id": 6,
+    "userId": 106,
+    "products": []
+    },
+    {
+    "id": 7,
+    "userId": 107,
+    "products": [
+        {
+        "productId": 204,
+        "name": "Keyboard",
+        "quantity": 1,
+        "price": 45.00
+        },
+        {
+        "productId": 205,
+        "name": "Monitor",
+        "quantity": 2,
+        "price": 150.75
+        }
+    ]
+    },
+    {
+    "id": 8,
+    "userId": 108,
+    "products": []
+    },
+    {
+    "id": 9,
+    "userId": 109,
+    "products": [
+        {
+        "productId": 206,
+        "name": "USB Cable",
+        "quantity": 3,
+        "price": 5.99
+        }
+    ]
+    },
+    {
+    "id": 10,
+    "userId": 110,
+    "products": []
+    },
+    {
+    "id": 11,
+    "userId": 111,
+    "products": [
+        {
+        "productId": 207,
+        "name": "Webcam",
+        "quantity": 1,
+        "price": 89.99
+        },
+        {
+        "productId": 208,
+        "name": "Desk Lamp",
+        "quantity": 1,
+        "price": 35.49
+        }
+    ]
+    },
+    {
+    "id": 12,
+    "userId": 112,
+    "products": []
+    },
+    {
+    "id": 13,
+    "userId": 113,
+    "products": [
+        {
+        "productId": 209,
+        "name": "Smartphone",
+        "quantity": 1,
+        "price": 999.99
+        }
+    ]
+    },
+    {
+    "id": 14,
+    "userId": 114,
+    "products": []
+    },
+    {
+    "id": 15,
+    "userId": 115,
+    "products": [
+        {
+        "productId": 210,
+        "name": "Bluetooth Speaker",
+        "quantity": 2,
+        "price": 49.99
+        }
+    ]
+    }
+]
