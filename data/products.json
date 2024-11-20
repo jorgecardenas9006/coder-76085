@@ -1,0 +1,49 @@
+[
+  {
+    "id": 1,
+    "title": "Laptop Gamer",
+    "description": "Laptop con procesador Intel i7, 16GB RAM, y tarjeta gráfica RTX 3060.",
+    "code": "LTG123",
+    "price": "1200.99",
+    "stock": "10",
+    "category": "Computadores",
+    "thumbnail": [
+      "laptop_gamer.jpg",
+      "laptop_gamer_2.jpg"
+    ],
+    "status": true
+  },
+  {
+    "id": 2,
+    "title": "Smartphone Pro",
+    "description": "Smartphone con cámara de 108MP, 256GB de almacenamiento y 5G.",
+    "code": "SPP456",
+    "price": 899.99,
+    "stock": 25,
+    "category": "cELULARES",
+    "thumbnail": "smartphone_pro.jpg",
+    "status": true
+  },
+  {
+    "id": 3,
+    "title": "Silla Ergonomica",
+    "description": "Silla de oficina con soporte lumbar y ajuste de altura.",
+    "code": "SER678",
+    "price": 2000,
+    "stock": 18,
+    "category": "Muebles",
+    "thumbnail": "silla_ergonomica.jpg",
+    "status": true
+  },
+  {
+    "id": 4,
+    "title": "Teclado Mecánico",
+    "description": "Teclado RGB con switches mecánicos y diseño compacto.",
+    "code": "TKM345",
+    "price": 129.99,
+    "stock": 30,
+    "category": "Accesorios",
+    "thumbnail": "teclado_mecanico.jpg",
+    "status": true
+  }
+]
