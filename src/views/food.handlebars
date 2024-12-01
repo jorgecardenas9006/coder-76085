@@ -1,0 +1,18 @@
+<div>
+    <h1>
+        Hola {{user.name}} gusto en saludarte.
+    </h1>
+    {{!-- si isAdmin = true -> muestro los productos --}}
+    {{#if isAdmin}}
+        <ul>
+            {{#each food}}
+                <li>{{this.name}} - ${{this.price}}</li>
+            {{/each}}
+        </ul>
+    {{!-- si isAdmin = falso -> no muestro los productos --}}
+    {{else}}
+        <p>No tienes permisos para ver los productos</p>
+    {{/if}}
+</div>
+
+<script src="/js/index.js"></script>
