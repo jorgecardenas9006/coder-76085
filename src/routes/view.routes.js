@@ -1,4 +1,5 @@
 import { Router } from "express";
+import { productos } from '../data/data.js';
 
 const router = Router();
 
@@ -17,17 +18,18 @@ router.post('/realTimeProducts', (req, res) => {
 // Endpoint para eliminar productos
 router.delete('/realTimeProducts/:id', (req, res) => {
   const { id } = req.params;
-  const product = productos.find(product => product.id === Number(id));
-  if (product) {
-    // Eliminar el producto del array
-    productos = productos.filter(product => product.id !== Number(id));
+  const productIndex = productos.findIndex(product => product.id === parseInt(id));
+  if (productIndex !== -1) {
+    productos.splice(productIndex, 1);
     // Emitir el evento de socket.io con todos los productos
     req.io.emit('productos', productos);
-    res.json(product);
+    res.json({ success: 'Producto eliminado' });
   } else {
-    res.status(404).json({ error: 'Producto no encontrado' });
+    res.json({ error: 'Producto no encontrado' });
   }
 });
+
+
 router.get('/realTimeProducts', (req, res) => {
     res.render('realTimeProducts');
 });
