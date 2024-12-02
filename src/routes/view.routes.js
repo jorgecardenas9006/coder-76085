@@ -62,4 +62,12 @@ router.get('/user', (req, res) => {
     res.render('user', { user: userRandom });
 });
 
+router.get('/productos', (req, res) => {
+    res.render('index', {});
+});
+
+router.get('/message', (req, res) => {
+    res.render('messages', {});
+});
+
 export default router;
