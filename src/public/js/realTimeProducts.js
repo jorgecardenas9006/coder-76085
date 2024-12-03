@@ -1,6 +1,22 @@
 const productos = document.getElementById('productos');
 const socket = io();
 socket.emit('productos', 'Iniciando conexion');
+const boton = document.getElementById('botonProducto');
+boton.addEventListener('click', (e) => {
+    e.preventDefault();
+    const producto = capturarDatosFormulario();
+    fetch('http://localhost:8080/realTimeProducts', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(producto)
+    })
+        .then(res => res.json())
+        .then(data => {
+            console.log(data);
+        });
+});
 
 //usar map para mostrar los objetos en el front
 const dataMap = socket.on("productos", (data) => {
@@ -38,5 +54,15 @@ function removeChildProducts() {
     while (productos.firstChild) {
         productos.removeChild(productos.firstChild);
     }
+}
+
+function capturarDatosFormulario(){
+    const nombre = document.getElementById('nombreProducto').value;
+    const marca = document.getElementById('marcaProducto').value;
+    const modelo = document.getElementById('modeloProducto').value;
+    const precio = document.getElementById('precioProducto').value;
+    const categoria = document.getElementById('categoriaProducto').value;
+    const producto = { nombre, marca, modelo, precio, categoria };
+    return producto;
 }
 

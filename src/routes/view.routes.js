@@ -12,7 +12,7 @@ router.post('/realTimeProducts', (req, res) => {
   productos.push(newProduct);
   // Emitir el evento de socket.io con todos los productos
   req.io.emit('productos', productos);
-  res.json(newProduct);
+  res.status(201).json("producto agregado");
 });
 
 // Endpoint para eliminar productos
@@ -23,7 +23,7 @@ router.delete('/realTimeProducts/:id', (req, res) => {
     productos.splice(productIndex, 1);
     // Emitir el evento de socket.io con todos los productos
     req.io.emit('productos', productos);
-    res.json({ success: 'Producto eliminado' });
+    res.status(200).json("producto eliminado");
   } else {
     res.json({ error: 'Producto no encontrado' });
   }
