@@ -19,7 +19,7 @@ app.use('/api/users', usersRouter);
 //metodo para conectar a la base de datos
 const db = async () => {
     try {
-        await mongoose.connect('mongodb+srv://jorgecardenas9006:u4W9KIPlbqZFHo3G@codercluster.bi8xn.mongodb.net/coder');
+        await mongoose.connect('mongodb+srv://jorgec:sdfsdf@codercluster.bi8xn.mongodb.net/coder');
         console.log('Database connected');
     } catch (error) {
         console.log('Error: ', error);
