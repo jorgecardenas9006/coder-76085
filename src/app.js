@@ -1,18 +1,22 @@
 import express from 'express';
 import mongoose from 'mongoose';
-import __dirname from './tools.js';
+import __dirname from './utils.js';
 import usersRouter from './routes/users.router.js';
 import productsRouter from './routes/products.router.js';
 import cartsRouter from './routes/carts.router.js';
-
-import { cartModel } from './services/models/cart.model.js';
-import { productModel } from './services/models/product.model.js';
-import { userModel } from './services/models/user.model.js';
+import handlebars from 'express-handlebars';
+import http from 'http';
 
 // Importar enviroment variables
 import config from './configs/default.js';
 
 const app = express();
+
+const server = http.createServer(app);
+app.engine('handlebars', handlebars.engine());
+app.set('views', __dirname+'/views');
+app.set('view engine', 'handlebars');
+app.use(express.static(__dirname+'/public'));
 
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));

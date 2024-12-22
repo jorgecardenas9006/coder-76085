@@ -1,0 +1,19 @@
+<!-- Armar cards con boostrap -->
+<div class="container">
+    <div class="row">
+        {{#each products}}
+        <div class="col-4">
+            <div class="card" style="width: 18rem;">
+                <img src="{{img}}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title
+                    ">{{nombre}}</h5>
+                    <p class="card-text">{{descripcion}}</p>
+                    <p class="card-text">{{precio}}</p>
+                    <a href="/products/{{_id}}" class="btn btn-primary">Ver más</a>
+                </div>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+</div>

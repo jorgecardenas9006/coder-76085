@@ -1,11 +1,12 @@
 import { Router } from "express";
 import ProductManager from "../services/managers/ProductManager.js";
+import handlebars from 'express-handlebars';
 
 const router = Router();
 const productManager = new ProductManager();
 
 //Buscar un producto por un solo campo
-router.get('/', async(req, res) => {
+/*router.get('/', async(req, res) => {
     try {
         const parametro = req.query;
         const product = await productManager.getByField(parametro);
@@ -16,17 +17,15 @@ router.get('/', async(req, res) => {
     } catch (error) {
         res.status(400).json({message: error.message});
     }
-});
+});*/
 
 
 //Buscar todos los productos
 router.get('/', async (req, res) => {
     try {
         const products = await productManager.getAll();
-        res.send({
-            result: "Success",
-            payload: products
-        });
+        //enviar los productos a la vista index como json
+        res.render('index', {products});
     } catch (error) {
         res.status(400).json({message: error.message});
     }
