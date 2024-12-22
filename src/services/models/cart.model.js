@@ -4,26 +4,27 @@ const cartCollection = 'cart'
 
 // Definimos los parametros de la colección
 const cartSchema = new mongoose.Schema({
-    user_id: {
+    usuario: {
         type: mongoose.Schema.Types.ObjectId,
-        required: true
+        required: true,
+        ref: 'usuarios'
     },
     products: [{
         product_id: {
             type: mongoose.Schema.Types.ObjectId,
-            required: true
+            required: false
         },
         quantity: {
             type: Number,
-            required: true
+            required: false
         },
         price: {
             type: Number,
-            required: true
+            required: false
         },
         total: {
             type: Number,
-            required: true
+            required: false
         }
     }]
 })

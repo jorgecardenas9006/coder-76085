@@ -50,6 +50,10 @@ router.get('/:id', async(req, res) => {
 //Crear un carrito
 router.post('/', async(req, res) => {
     try {
+        const userId = req.body.usuario;
+        if (!userId) {
+            throw new Error("usuario is required");
+        }
         const carts = await cartManager.createCart(req.body);
         res.send({
             result: "Success",
@@ -92,6 +96,10 @@ router.delete('/:id', async(req, res) => {
 //Agregar un producto a un carrito
 router.post('/:id/products', async(req, res) => {
     try {
+        const productId = req.body.product_id;
+        if (!productId) {
+            throw new Error("product_id is required");
+        }
         const carts = await cartManager.addProduct(req.params.id, req.body);
         res.send({
             result: "Success",
