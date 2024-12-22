@@ -39,7 +39,7 @@ router.get('/:id', async (req, res) => {
     try {
         const cartId = req.params.id;
 
-        // Popular usuarios del carrito
+        // Popular carrito
         const cart = await cartManager.populateAll({ _id: cartId });
         res.send({
             result: "Success",
