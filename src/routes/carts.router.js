@@ -34,7 +34,7 @@ router.get('/all', async(req, res) => {
     }
 });
 
-//Buscar un carrito por id
+//Buscar un carrito por id con populate
 router.get('/:id', async (req, res) => {
     try {
         const cartId = req.params.id;
