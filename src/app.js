@@ -38,9 +38,8 @@ app.use(config.API_PREFIX+'/carts', cartsRouter);
 const connectMongo = async () => {
     try {
         await mongoose.connect(config.DATABASE_URL);
-        //populate de usuarios
-        const carritos = await cartModel.find().populate('usuarios.usuario'); 
-        //console.log('Carritos con usuarios populados:', JSON.stringify(carritos, null, 2));
+        console.log('Connected to MongoDB');
+        // El populate se hace en la ruta de carritos /:id para que no se haga en cada consulta
     } catch (error) {
         console.error('Could not connect to MongoDB');
         console.error(error);
