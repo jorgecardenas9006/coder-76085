@@ -5,6 +5,10 @@ import usersRouter from './routes/users.router.js';
 import productsRouter from './routes/products.router.js';
 import cartsRouter from './routes/carts.router.js';
 
+import { cartModel } from './services/models/cart.model.js';
+import { productModel } from './services/models/product.model.js';
+import { userModel } from './services/models/user.model.js';
+
 // Importar enviroment variables
 import config from './configs/default.js';
 
@@ -34,7 +38,9 @@ app.use(config.API_PREFIX+'/carts', cartsRouter);
 const connectMongo = async () => {
     try {
         await mongoose.connect(config.DATABASE_URL);
-        console.log('Connected to MongoDB');
+        //populate de usuarios
+        const carritos = await cartModel.find().populate('usuarios.usuario'); 
+        //console.log('Carritos con usuarios populados:', JSON.stringify(carritos, null, 2));
     } catch (error) {
         console.error('Could not connect to MongoDB');
         console.error(error);

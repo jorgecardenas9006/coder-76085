@@ -2,7 +2,8 @@ import {Router} from 'express';
 import CartManager from '../services/managers/CartManager.js';
 
 const router = Router();
-const cartManager = new CartManager(); 
+const cartManager = new CartManager();
+
 
 //Buscar los usuarios por parametros o query
 router.get('/', async(req, res) => {
@@ -34,16 +35,18 @@ router.get('/all', async(req, res) => {
 });
 
 //Buscar un carrito por id
-router.get('/:id', async(req, res) => {
+router.get('/:id', async (req, res) => {
     try {
-        const carts = await cartManager.getByField({_id: req.params.id});
+        const cartId = req.params.id;
+
+        // Popular usuarios del carrito
+        const cart = await cartManager.populateAll({ _id: cartId });
         res.send({
             result: "Success",
-            payload: carts
+            payload: cart
         });
-    }
-    catch (error) {
-        res.status(400).json({message: error.message});
+    } catch (error) {
+        res.status(400).json({ message: error.message });
     }
 });
 
@@ -51,10 +54,14 @@ router.get('/:id', async(req, res) => {
 router.post('/', async(req, res) => {
     try {
         const userId = req.body.usuario;
+        const products = req.body.products;
         if (!userId) {
             throw new Error("usuario is required");
         }
-        const carts = await cartManager.createCart(req.body);
+        const carts = await cartManager.createCart({ 
+            usuarios: [{ usuario: userId }] , 
+            products: [{ productos: products }] || []
+        });
         res.send({
             result: "Success",
             payload: carts
@@ -96,7 +103,7 @@ router.delete('/:id', async(req, res) => {
 //Agregar un producto a un carrito
 router.post('/:id/products', async(req, res) => {
     try {
-        const productId = req.body.product_id;
+        const productId = req.body.producto;
         if (!productId) {
             throw new Error("product_id is required");
         }

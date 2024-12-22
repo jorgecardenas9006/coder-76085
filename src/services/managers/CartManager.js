@@ -1,4 +1,6 @@
 import { cartModel } from "../models/cart.model.js";
+import { productModel } from "../models/product.model.js";
+import { userModel } from "../models/user.model.js";
 
 export default class CartManager {
     constructor() {
@@ -45,4 +47,16 @@ export default class CartManager {
         return await cart.save();
     }
 
+    async deleteAllProducts(id){
+        const cart = await this.cartModel.findById(id);
+        cart.products = [];
+        return await cart.save();
+    }
+
+    async populateAll(filter) {
+        return await this.cartModel
+            .findOne(filter)
+            .populate('usuarios.usuario')
+            .populate('productos.producto');
+    }
 }
