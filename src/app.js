@@ -1,10 +1,10 @@
 import express from 'express';
 import mongoose from 'mongoose';
+import handlebars from 'express-handlebars';
 import __dirname from './utils.js';
 import usersRouter from './routes/users.router.js';
 import productsRouter from './routes/products.router.js';
 import cartsRouter from './routes/carts.router.js';
-import handlebars from 'express-handlebars';
 import http from 'http';
 
 // Importar enviroment variables
@@ -13,7 +13,13 @@ import config from './configs/default.js';
 const app = express();
 
 const server = http.createServer(app);
-app.engine('handlebars', handlebars.engine());
+app.engine('handlebars', handlebars.engine({
+    runtimeOptions: { 
+        allowProtoPropertiesByDefault: true, 
+        allowProtoMethodsByDefault: true
+    }
+}
+));
 app.set('views', __dirname+'/views');
 app.set('view engine', 'handlebars');
 app.use(express.static(__dirname+'/public'));
