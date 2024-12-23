@@ -1,0 +1,57 @@
+<!-- Vista del carrito de compras -->
+<div class="container my-4">
+    <div class="row">
+        <div class="col-12">
+            <h1 class="text-center">Carrito de compras</h1>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">Producto</th>
+                        <th scope="col">Precio</th>
+                        <th scope="col">Cantidad</th>
+                        <th scope="col">Subtotal</th>
+                        <th scope="col">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each cart}}
+                    <tr>
+                        <td>{{productos.nombre}}</td>
+                        <td>${{productos.precio}}</td>
+                        <td>{{this.cantidad}}</td>
+                        <td>${{this.subtotal}}</td>
+                        <td>
+                            <a href="/cart/{{this.producto._id}}/add" class="btn btn-primary">+</a>
+                            <a href="/cart/{{this.producto._id}}/remove" class="btn btn-danger">-</a>
+                        </td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+            <h3 class="text-center">Total: ${{total}}</h3>
+            <a href="/cart/checkout" class="btn btn-success w-100">Finalizar compra</a>
+        </div>
+    </div>
+</div>
+
+<div>
+    {{#each cart}}
+        {{#each this}}
+            <p>{{producto}}</p>
+        {{/each}}
+    {{/each}}
+</div>
+
+<h1>Lista de Productos</h1>
+    <ul>
+        {{#each productos}}
+            {{#each this}}
+                <li>
+                    <h2>{{producto.nombre}}</h2>
+                    <p>Precio: ${{producto.precio}}</p>
+                    <p>Stock: {{producto.stock}}</p>
+                    <p>Descripción: {{producto.descripcion}}</p>
+                </li>
+            {{/each}}
+        {{/each}}
+    </ul>   
