@@ -32,7 +32,7 @@ export default class CartManager {
         cart.productos.forEach(p => {
             quantity += p.quantity;
         });
-        return quantity;
+        return parseInt(quantity);
     }
     async calculateTotal(id){
         const cart = await this.cartModel.findById(id);
@@ -40,14 +40,12 @@ export default class CartManager {
         cart.productos.forEach(p => {
             total += p.total;
         });
-        return total;
+        return parseFloat(total);
     }
 
     async addProduct(id, product){
         const cart = await this.cartModel.findById(id);
         cart.productos.push(product);
-        cart.productos.push(this.calcutedQuantity(id));
-        cart.productos.push(this.calculateTotal(id));
         return await cart.save();
     }
 

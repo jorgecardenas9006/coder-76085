@@ -57,7 +57,8 @@ router.post('/', async(req, res) => {
         }
         const carts = await cartManager.createCart({ 
             usuarios: [{ usuario: userId }] , 
-            products: [{ productos: products }] || []
+            products: [{ productos: products }] || [],
+            total: 0
         });
         res.send({
             result: "Success",
