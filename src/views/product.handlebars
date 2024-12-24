@@ -1,3 +1,22 @@
 <!-- Armar card de un solo producto con boton de apgregar al carrito -->
-<div class="container d-flex justify-content-center align-items-center vh-100"> <div class="row"> <div class="col-12"> <div class="card mx-auto shadow-lg card-custom"> <img src="{{product.img}}" class="card-img-top card-img-top-custom" alt="Producto"> <div class="card-body"> <h5 class="card-title text-center font-weight-bold">{{product.nombre}}</h5> <p class="card-text text-center text-muted">{{product.descripcion}}</p> <p class="card-text text-center font-weight-bold text-primary">${{product.precio}}</p> <a href="/products/{{product._id}}/cart" class="btn btn-primary w-100 btn-custom">Agregar al carrito</a> </div> </div> </div> </div> </div>
+<div class="container d-flex justify-content-center align-items-center vh-100">
+    <div class="row"> <div class="col-12">
+        <div class="card mx-auto shadow-lg card-custom">
+            <img src="{{product.img}}" class="card-img-top card-img-top-custom" alt="Producto">
+            <div class="card-body"> 
+                <h5 class="card-title text-center font-weight-bold">{{product.nombre}}
+                </h5> 
+                <p class="card-text text-center text-muted">{{product.descripcion}}</p> 
+                <p class="card-text text-center font-weight-bold text-primary">${{product.precio}}</p>
+                <a class="btn btn-primary w-100 btn-custom" onclick="agregarAlCarrito()">Agregar al carrito</a> 
+            </div> 
+        </div> 
+    </div>
+</div> 
 
+<script>
+    const id = '{{product.id}}';
+    const agregarAlCarrito = () => {
+        alert(`Producto ${id} agregado al carrito`);
+    };
+</script>

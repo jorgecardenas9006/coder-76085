@@ -26,30 +26,48 @@ export default class CartManager {
     async deleteCart(id){
         return await this.cartModel.findByIdAndDelete(id);
     }
+    async calcutedQuantity(id){
+        const cart = await this.cartModel.findById(id);
+        let quantity = 0;
+        cart.productos.forEach(p => {
+            quantity += p.quantity;
+        });
+        return quantity;
+    }
+    async calculateTotal(id){
+        const cart = await this.cartModel.findById(id);
+        let total = 0;
+        cart.productos.forEach(p => {
+            total += p.total;
+        });
+        return total;
+    }
 
     async addProduct(id, product){
         const cart = await this.cartModel.findById(id);
-        cart.products.push(product);
+        cart.productos.push(product);
+        cart.productos.push(this.calcutedQuantity(id));
+        cart.productos.push(this.calculateTotal(id));
         return await cart.save();
     }
 
     async updateProduct(id, idProduct, product){
         const cart = await this.cartModel.findById(id);
         const productIndex = cart.products.findIndex(p => p._id == idProduct);
-        cart.products[productIndex] = product;
+        cart.productos[productIndex] = product;
         return await cart.save();
     }
 
     async deleteProduct(id, idProduct){
         const cart = await this.cartModel.findById(id);
         const productIndex = cart.products.findIndex(p => p._id == idProduct);
-        cart.products.splice(productIndex, 1);
+        cart.productos.splice(productIndex, 1);
         return await cart.save();
     }
 
     async deleteAllProducts(id){
         const cart = await this.cartModel.findById(id);
-        cart.products = [];
+        cart.productos = [];
         return await cart.save();
     }
 

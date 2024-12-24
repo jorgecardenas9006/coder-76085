@@ -41,7 +41,7 @@ router.get('/:id', async (req, res) => {
 
         // Popular carrito
         const cart = await cartManager.populateAll({ _id: cartId });
-        res.render('cart', { cart });
+        res.render('cart', JSON.parse(JSON.stringify(cart)));
     } catch (error) {
         res.status(400).json({ message: error.message });
     }
