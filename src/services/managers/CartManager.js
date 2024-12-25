@@ -58,7 +58,7 @@ export default class CartManager {
 
     async deleteProduct(id, idProduct){
         const cart = await this.cartModel.findById(id);
-        const productIndex = cart.products.findIndex(p => p._id == idProduct);
+        const productIndex = cart.productos.findIndex(p => p._id == idProduct);
         cart.productos.splice(productIndex, 1);
         return await cart.save();
     }
